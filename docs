@@ -1,0 +1,199 @@
+# ESP32 Portable WiFi Analyzer
+
+A portable Wi-Fi analyzer built with an **ESP32-S2 Mini** microcontroller and an **OLED SSD1306 display**.
+
+The device scans nearby Wi-Fi networks and displays useful information such as network name, signal strength, Wi-Fi channel, and security type.
+
+The project is designed as a small portable tool for learning about Wi-Fi communication, ESP32 development, and embedded electronics.
+
+---
+
+# Features
+
+* Scan nearby Wi-Fi networks
+* Display signal strength (RSSI)
+* Show Wi-Fi channel
+* Detect Wi-Fi security type
+* Display information on OLED screen
+* Browse detected networks using a button
+* Automatically rescan networks every 15 seconds
+
+---
+
+# Hardware
+
+## Main Version
+
+This project was created using:
+
+| Component           | Function                           |
+| ------------------- | ---------------------------------- |
+| ESP32-S2 Mini       | Main controller and Wi-Fi scanner  |
+| OLED SSD1306 128×64 | Displays network information       |
+| Push button         | Switches between detected networks |
+
+## Compatible Boards
+
+The project can also work with other ESP32-based boards, for example:
+
+* ESP32 DevKit
+* ESP32-WROOM boards
+* ESP32-S3 boards
+* ESP32-C3 boards
+
+The pin configuration may need to be changed depending on the board model.
+
+---
+
+# Wiring
+
+The OLED display uses I²C communication.
+
+## OLED Display
+
+| OLED | ESP32-S2 Mini |
+| ---- | ------------- |
+| VCC  | 3.3V          |
+| GND  | GND           |
+| SDA  | GPIO 9        |
+| SCL  | GPIO 12       |
+
+## Push Button
+
+| Button     | ESP32-S2 Mini |
+| ---------- | ------------- |
+| One pin    | GPIO 0        |
+| Second pin | GND           |
+
+The internal pull-up resistor of the ESP32 is used, so no external resistor is required.
+
+---
+
+# Required Libraries
+
+The project uses these Arduino libraries:
+
+* WiFi.h
+* Wire.h
+* Adafruit GFX Library
+* Adafruit SSD1306
+
+---
+
+# How It Works
+
+1. The ESP32-S2 Mini starts in Wi-Fi station mode.
+2. It disconnects from any existing Wi-Fi connection.
+3. The device scans nearby wireless networks.
+4. Information about detected networks is stored.
+5. The first network is displayed on the OLED screen.
+6. The user can switch between networks using the button.
+7. Every 15 seconds, the device automatically performs a new scan.
+
+---
+
+# Displayed Information
+
+For each Wi-Fi network, the analyzer shows:
+
+* SSID (network name)
+* Signal strength
+* Wi-Fi channel
+* Security type
+
+Example:
+
+```
+2/8
+----------------
+MyWiFi
+
+Signal: -55 dBm
+Channel: 6
+Security: WPA2
+```
+
+---
+
+# RSSI Signal Strength
+
+Wi-Fi signal strength is measured in dBm.
+
+Because the values are negative, a value closer to zero means a stronger signal.
+
+Examples:
+
+| RSSI    | Signal Quality |
+| ------- | -------------- |
+| -30 dBm | Excellent      |
+| -50 dBm | Very strong    |
+| -70 dBm | Usable         |
+| -85 dBm | Weak           |
+| -90 dBm | Very weak      |
+
+---
+
+# Wi-Fi Channels
+
+Wi-Fi channels are used to separate wireless networks and reduce interference.
+
+If many nearby networks use the same channel, performance can decrease.
+
+Common 2.4 GHz channels:
+
+* Channel 1
+* Channel 6
+* Channel 11
+
+The analyzer can help identify crowded channels.
+
+---
+
+# Security Detection
+
+The analyzer can detect common Wi-Fi security types:
+
+* Open network
+* WEP
+* WPA
+* WPA2
+* WPA3
+* WPA2/WPA3
+
+This helps identify whether nearby networks use encryption.
+
+---
+
+# Limitations
+
+* The ESP32-S2 Mini supports only 2.4 GHz Wi-Fi.
+* The analyzer cannot display passwords.
+* The analyzer cannot see devices connected to a router without access to the router.
+* The analyzer does not capture or monitor network traffic.
+* Results depend on the Wi-Fi hardware and antenna quality.
+
+---
+
+# Future Improvements
+
+Possible future versions:
+
+* Signal strength graphs
+* Automatic recommendation of the best Wi-Fi channel
+* Web dashboard
+* Save scan history
+* Wi-Fi coverage mapping
+* Battery-powered portable version
+* Signal strength tracking over time
+
+---
+
+# Project Goal
+
+The goal of this project is to create a small portable Wi-Fi analysis tool using an ESP32-S2 Mini while learning about wireless communication, embedded programming, and electronics.
+
+---
+
+# Author
+
+Open-source project created by Josef Sysel
