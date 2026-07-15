@@ -22,12 +22,7 @@ Created as an open-source project for Hack Club Stardance.
 
 ## Demo
 
-(Add photos or video here)
-
-Example:
-
-![WiFi Analyzer](images/device.jpg)
-
+[Images](images)
 ---
 
 ## Hardware
