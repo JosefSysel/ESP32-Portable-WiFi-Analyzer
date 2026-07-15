@@ -59,6 +59,12 @@ Pin 2 | GND
 
 ---
 
+## License
+
+This project is licensed under the MIT License.
+
+---
+
 ## Installation
 
 ### 1. Install Arduino IDE
